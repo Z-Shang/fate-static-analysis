@@ -1,0 +1,34 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+BraceType	text-object.ts	/^    export var BraceType = new Type("Brace", "syntax_brace", SyntaxType);$/;"	v
+BracketType	text-object.ts	/^    export var BracketType = new Type("Bracket", "syntax_bracket", SyntaxType);$/;"	v
+CommentType	text-object.ts	/^    export var CommentType = new Type("Comment", "text_comment", TextType);$/;"	v
+ConstantTypr	text-object.ts	/^    export var ConstantTypr = new Type("Constant", "symbol_constant", SymbolType);$/;"	v
+DoubleStringType	text-object.ts	/^    export var DoubleStringType = new Type("Double Quoted String", "string_double", StringType);$/;"	v
+EqualityType	text-object.ts	/^    export var EqualityType = new Type("Equality", "syntax_equality", SyntaxType);$/;"	v
+FloatType	text-object.ts	/^    export var FloatType = new Type("Float", "number_float", NumberType);$/;"	v
+FunctionType	text-object.ts	/^    export var FunctionType = new Type("Function", "symbol_function", SymbolType);$/;"	v
+IntegerType	text-object.ts	/^    export var IntegerType = new Type("Integer", "number_integer", NumberType);$/;"	v
+KeywordType	text-object.ts	/^    export var KeywordType = new Type("Keyword", "text_keyword", TextType);$/;"	v
+NumberType	text-object.ts	/^    export var NumberType = new Type("Number", "number_plain", null);$/;"	v
+OperatorType	text-object.ts	/^    export var OperatorType = new Type("Operator", "syntax_operator", SyntaxType);$/;"	v
+ParenthesisType	text-object.ts	/^    export var ParenthesisType = new Type("Parenthesis", "syntax_parenthesis", SyntaxType);$/;"	v
+PointyType	text-object.ts	/^    export var PointyType = new Type("Pointy", "syntax_pointy", SyntaxType);$/;"	v
+RenderType	text-object.ts	/^    interface RenderType {$/;"	i
+ReserveType	text-object.ts	/^    export var ReserveType = new Type("Reserve", "syntax_reserve", SyntaxType);$/;"	v
+SingleStringType	text-object.ts	/^    export var SingleStringType = new Type("Single Quoted String", "string_single", StringType);$/;"	v
+StringType	text-object.ts	/^    export var StringType = new Type("String", "string_plain", null);$/;"	v
+StyleRule	text-object.ts	/^    export class StyleRule {$/;"	c
+SymbolType	text-object.ts	/^    export var SymbolType = new Type("Symbol", "text_symbol", TextType);$/;"	v
+SyntaxType	text-object.ts	/^    export var SyntaxType = new Type("Syntax", "syntax_plain", null);$/;"	v
+TerminalType	text-object.ts	/^    export var TerminalType = new Type("Terminal", "syntax_terminal", SyntaxType);$/;"	v
+TextBlock	text-object.ts	/^    export interface TextBlock {$/;"	i
+TextObject	text-object.ts	/^    export class TextObject {$/;"	c
+TextObjects	text-object.ts	/^module TextObjects {$/;"	n
+TextType	text-object.ts	/^    export var TextType = new Type("Text", "text_plain", null);$/;"	v
+Type	text-object.ts	/^    export class Type {$/;"	c
+VariableType	text-object.ts	/^    export var VariableType = new Type("Variable", "symbol_variable", SymbolType);$/;"	v

@@ -1,3 +1,5 @@
+/// <reference path="utils.ts" />
+
 module TextObjects {
     export class Type {
         name : string;
@@ -25,6 +27,8 @@ module TextObjects {
     export var SyntaxType = new Type("Syntax", "syntax_plain", null);
 
     export var OperatorType = new Type("Operator", "syntax_operator", SyntaxType);
+
+    export var ReserveType = new Type("Reserve", "syntax_reserve", SyntaxType);
 
     export var ParenthesisType = new Type("Parenthesis", "syntax_parenthesis", SyntaxType);
 
@@ -54,11 +58,27 @@ module TextObjects {
 
     export class TextObject {
         object_type : Type;
-        value : any
+        value : any;
 
-            constructor(t : Type, v : any){
-                this.object_type = t;
-                this.value = v;
-            }
+        constructor(t : Type, v : any){
+            this.object_type = t;
+            this.value = v;
+        }
+    }
+
+    export class StyleRule {
+        name : string;
+
+    }
+
+    //A dummy type for the interface : TextBlock
+    interface RenderType {
+        () : void;
+    }
+
+    export interface TextBlock {
+        text_objects : TextObject[];
+        language_family : string;
+        render : RenderType;
     }
 }
