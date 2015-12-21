@@ -1,0 +1,19 @@
+{
+    "name" : "fate-static-analysis",
+    "version" : "0.0.1",
+    "description" : "The static analysis engine of FATE / Another Text Editor",
+    "main" : "./src/main.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/z-shang/fate-static-analysis.git"
+    },
+    "author": "Z-Shang",
+    "license": "GPL-3.0+",
+    "bugs": {
+        "url": "https://github.com/z-shang/fate-static-analysis/issues"
+    },
+    "homepage": "https://github.com/z-shang/fate-static-analysis#readme",
+    "devDependencies": {
+        "typescript" : "^1.7.5"
+    }
+}
