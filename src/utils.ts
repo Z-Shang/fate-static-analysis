@@ -26,8 +26,8 @@ module Utils {
     export interface Mapable {
         map_head : Mapfn;
         map_tail : Mapfn;
-        foldl : Foldfn;
-        foldr : Foldfn;
+        fold_head : Foldfn;
+        fold_tail : Foldfn;
     }
 
     export class Cons {
@@ -95,7 +95,7 @@ module Utils {
             }
         }
 
-        map_tail(fn : Arity1) : List<any> | void {
+        map_tail(fn : Arity1) : List<any>{
             if(this.tail == null){
                 return new List<any>(fn.call(this, this), null);
             }else{
@@ -103,12 +103,20 @@ module Utils {
             }
         }
 
-        foldl(fn : Arity2, base : any) : any {
-
+        fold_head(fn : Arity2, base : any) : any {
+            if(this.tail == null){
+                return fn.call(fn, this.head, base);
+            }else{
+                return fn.call(fn, this.head, (<List<T>>this.tail).fold_head(fn, base));
+            }
         }
 
-        foldr(fn : Arity2, base : any) : any {
-
+        fold_tail(fn : Arity2, base : any) : any {
+            if(this.tail == null){
+                return fn.call(fn, this, base);
+            }else{
+                return fn.call(fn, this, (<List<T>>this.tail).fold_tail(fn, base));
+            }
         }
 
         to_string() : string {
@@ -116,6 +124,14 @@ module Utils {
                 return "[" + this.head + "]";
             }else{
                 return "[" + this.head + ", " + (<List<T>>this.tail).to_string() + "]";
+            }
+        }
+
+        length() : number {
+            if(this.tail == null){
+                return 1;
+            }else{
+                return 1 + (<List<T>>this.tail).length();
             }
         }
     }
@@ -151,6 +167,18 @@ module Utils {
             }
         }
 
+        first() : Record<T> {
+            return (<List<Record<T>>>this.records).head;
+        }
+
+        rest() : Map<T> | void {
+            if((<List<Record<T>>>this.records).tail == null){
+                return null;
+            }else{
+                return new Map((<List<Record<T>>>(<List<Record<T>>>this.records).tail).head, (<List<Record<T>>>(<List<Record<T>>>this.records).tail).tail);
+            }
+        }
+
         get_id(name : string) : T | void{
             if(this.records == null){
                 return null;
@@ -177,9 +205,10 @@ module Utils {
         }
 
         to_string() : string {
-            if(this.records == null){
-                return "";
+            if(this.rest() == null){
+                return "" + (<List<Record<T>>>this.records).head.to_string();
             }else{
+                return "" + (<List<Record<T>>>this.records).head.to_string() + "\n" + (<Map<T>>this.rest()).to_string();
             }
         }
     }
