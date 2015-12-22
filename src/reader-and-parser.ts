@@ -2,7 +2,7 @@
 
 module TextObjects {
     export class DefaultReader implements Reader {
-        rule(input : string) : boolean {
+        rule(input : string, context : any) : boolean {
 
             return false;
         }
@@ -15,7 +15,7 @@ module TextObjects {
     }
 
     export class DefaultParser implements Parser {
-        rule(intput : TextObject) : Type{
+        rule(intput : TextObject, context : any) : Type{
 
             return TextType;
         }

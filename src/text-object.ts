@@ -82,7 +82,7 @@ module TextObjects {
     }
 
     export interface ReaderRule {
-        (input : string) : boolean;
+        (input : string, context : any) : boolean;
     }
 
     export interface ReaderFn {
@@ -95,7 +95,7 @@ module TextObjects {
     }
 
     export interface ParserRule {
-        (input : TextObject) : Type;
+        (input : TextObject, context : any) : Type;
     }
 
     export interface ParserFn {
