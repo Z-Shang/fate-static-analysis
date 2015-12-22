@@ -5,6 +5,7 @@ module TextObjects {
         name : string;
         style : string;
         extend : Type | void;
+
         constructor(name : string, style : string, extend : Type | void){
             this.name = name;
             this.style = style;
@@ -66,9 +67,8 @@ module TextObjects {
         }
     }
 
-    export class StyleRule {
-        name : string;
-
+    export function new_plain_text(v : string) : TextObject {
+        return new TextObject(TextType, v);
     }
 
     //A dummy type for the interface : TextBlock
@@ -76,9 +76,34 @@ module TextObjects {
         () : void;
     }
 
-    export interface TextBlock {
-        text_objects : TextObject[];
-        language_family : string;
-        render : RenderType;
+    export class StyleRule {
+        name : string;
+
+    }
+
+    export interface ReaderRule {
+        (input : string) : boolean;
+    }
+
+    export interface ReaderFn {
+        (intput : string) : Utils.List<TextObject>;
+    }
+
+    export interface Reader {
+        rule : ReaderRule;
+        read : ReaderFn;
+    }
+
+    export interface ParserRule {
+        (input : TextObject) : Type;
+    }
+
+    export interface ParserFn {
+        (input : Utils.List<TextObject>) : Utils.List<TextObject>;
+    }
+
+    export interface Parser {
+        rule : ParserRule;
+        parse : ParserFn;
     }
 }
