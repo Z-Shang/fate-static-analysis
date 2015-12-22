@@ -10,4 +10,7 @@ console.log(testList.to_string());
 console.log(testList.map_head(function(n) { return n + 1; }).to_string());
 
 var testMap = new Utils.Map(new Utils.Record("test", 1), null);
-
+console.log(testMap.contains("test"));
+console.log(testMap.get_id("test"));
+testMap = testMap.add_raw("ttt", 2);
+testMap = testMap.add(new Utils.Record("asd", 3));

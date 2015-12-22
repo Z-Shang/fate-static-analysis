@@ -1,11 +1,33 @@
 module Utils {
+    interface Arity1 {
+        (arg1 : any) : any;
+    }
+
+    interface Arity2 {
+        (arg1 : any, arg2 : any) : any;
+    }
+
+    interface Arity3 {
+        (arg1 : any, arg2 : any, arg3 : any) : any;
+    }
+
+    interface Arity4 {
+        (arg1 : any, arg2 : any, arg3 : any, arg4 : any) : any;
+    }
+
     interface Mapfn {
-        (fn : any) : any;
+        (fn : Arity1) : any;
+    }
+
+    interface Foldfn {
+        (fn : Arity2, base : any) : any;
     }
 
     export interface Mapable {
         map_head : Mapfn;
         map_tail : Mapfn;
+        foldl : Foldfn;
+        foldr : Foldfn;
     }
 
     export class Cons {
@@ -65,7 +87,7 @@ module Utils {
             return tmp;
         }
 
-        map_head(fn : Mapfn) : List<any> {
+        map_head(fn : Arity1) : List<any> {
             if(this.tail == null){
                 return new List<any>(fn.call(this, this.head), null);
             }else{
@@ -73,12 +95,20 @@ module Utils {
             }
         }
 
-        map_tail(fn : Mapfn) : List<any> | void {
+        map_tail(fn : Arity1) : List<any> | void {
             if(this.tail == null){
                 return new List<any>(fn.call(this, this), null);
             }else{
                 return new List<any>(fn.call(this, this), (<List<T>>this.tail).map_tail(fn));
             }
+        }
+
+        foldl(fn : Arity2, base : any) : any {
+
+        }
+
+        foldr(fn : Arity2, base : any) : any {
+
         }
 
         to_string() : string {
@@ -116,13 +146,21 @@ module Utils {
                 return false;
             }else{
                 return (<List<Record<T>>>this.records).map_head(function(r) {
-                    r.name == name;
+                    return r.name == name;
                 }).contains(true);
             }
         }
 
-        id(name : string) : T | void{
-            return null;
+        get_id(name : string) : T | void{
+            if(this.records == null){
+                return null;
+            }else{
+                return (<List<Record<T>>>this.records).map_head(function (r) {
+                    if(r.name == name){
+                        return r.value;
+                    }
+                }).head;
+            }
         }
 
         add_raw(name : string, value : T) : Map<T>{
@@ -134,12 +172,15 @@ module Utils {
             if(this.contains(r.name)){
                 return this;
             }else{
-
+                return new Map<T>(r, this.records);
             }
+        }
 
-
-
-            return tmp;
+        to_string() : string {
+            if(this.records == null){
+                return "";
+            }else{
+            }
         }
     }
 }
