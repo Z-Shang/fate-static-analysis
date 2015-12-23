@@ -15,6 +15,8 @@ module TextObjects {
 
     export var TextType = new Type("Text", "text_plain", null);
 
+    export var SpaceType = new Type("Space", "text_space", TextType);
+
     export var SymbolType = new Type("Symbol", "text_symbol", TextType);
 
     export var VariableType = new Type("Variable", "symbol_variable", SymbolType);
