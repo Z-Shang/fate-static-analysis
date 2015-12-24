@@ -2,9 +2,7 @@
 /// <reference path="../src/text-object.ts" />
 /// <reference path="../src/utils.ts" />
 
-let testLst = new Utils.List<string>("let", null);
-testLst = testLst.add_front("var");
-testLst = testLst.add_front("function");
+let testLst = <Utils.List<string>>Utils.list("let", "function", "var", "return", "if", "else", "do", "while", "break", "switch");
 
 console.log(testLst.to_string());
 
