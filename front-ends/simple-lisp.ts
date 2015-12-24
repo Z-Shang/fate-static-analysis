@@ -1,8 +1,10 @@
 /// <reference path="../src/text-object.ts" />
 /// <reference path="../src/reader-and-parser.ts" />
 /// <reference path="../src/utils.ts" />
+/// <reference path="../lib/standard-lib.ts" />
 
 //This is just a simple reader and parser impelementation of a lisp-like language with limited standard functions
+
 
 class SimpleLispReader implements TextObjects.Reader {
     rule(input : string, context : any) : boolean {

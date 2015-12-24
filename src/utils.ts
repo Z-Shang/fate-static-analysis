@@ -153,6 +153,20 @@ module Utils {
         }
     }
 
+    export function list<T>(... args : T[]) : List<T> | void{
+        if(args == null){
+            return null;
+        }else{
+            let tmp =  new List<T>(args[0], null);
+            args = args.slice(1);
+            while(args[0] != null){
+                tmp = tmp.add_back(args[0]);
+                args = args.slice(1);
+            }
+            return tmp;
+        }
+    }
+
     export class Record<T> {
         name : string;
         value : T;

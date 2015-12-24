@@ -18,3 +18,6 @@ console.log(testMap.get_id("test"));
 testMap = testMap.add_raw("ttt", 2);
 testMap = testMap.add(new Utils.Record("asd", 3));
 console.log(testMap.to_string());
+
+var testLst = <Utils.List<number>>Utils.list(1, 2, 3, 4, 5, 6, 7);
+console.log(testLst.to_string());
