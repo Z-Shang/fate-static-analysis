@@ -2,9 +2,9 @@
 
 module TextObjects {
     export class DefaultReader implements Reader {
-        rule(input : string, context : any) : boolean {
+        rule(input : string, context : any) : Utils.Cons {
 
-            return false;
+            return new Utils.Cons(false, null);
         }
 
         read(input : string) : Utils.List<TextObject> {

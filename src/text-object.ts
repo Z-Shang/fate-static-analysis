@@ -92,7 +92,7 @@ module TextObjects {
     }
 
     export interface ReaderRule {
-        (input : string, context : any) : boolean;
+        (input : string, context : any) : Utils.Cons;
     }
 
     export interface ReaderFn {
