@@ -11,6 +11,10 @@ module TextObjects {
             this.style = style;
             this.extend = extend;
         }
+
+        to_string() : string {
+            return this.name;
+        }
     }
 
     export var TextType = new Type("Text", "text_plain", null);
@@ -63,14 +67,18 @@ module TextObjects {
         object_type : Type;
         value : any;
 
-        constructor(t : Type, v : any){
+        constructor(v : any, t : Type){
             this.object_type = t;
             this.value = v;
+        }
+
+        to_string() : string {
+            return this.value + " : " + this.object_type.to_string();
         }
     }
 
     export function new_plain_text(v : string) : TextObject {
-        return new TextObject(TextType, v);
+        return new TextObject(v, TextType);
     }
 
     //A dummy type for the interface : TextBlock
