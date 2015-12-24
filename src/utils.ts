@@ -3,6 +3,10 @@ module Utils {
         (arg1 : any) : any;
     }
 
+    interface Predicate1 {
+        (arg1 : any) : boolean;
+    }
+
     interface Arity2 {
         (arg1 : any, arg2 : any) : any;
     }
@@ -117,6 +121,19 @@ module Utils {
             }else{
                 return fn.call(fn, this, (<List<T>>this.tail).fold_tail(fn, base));
             }
+        }
+
+        filter(fn : Predicate1) : List<T> | void{
+            if(this.tail == null){
+                if(fn.call(this, this.head)){
+                    return new List<T>(this.head, null);
+                }
+            }else{
+                if(fn.call(this, this.head)){
+                    return new List<T>(this.head, (<List<T>>this.tail).filter(fn));
+                }
+            }
+            return null;
         }
 
         to_string() : string {
