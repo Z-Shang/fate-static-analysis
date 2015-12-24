@@ -91,7 +91,6 @@ class SimpleLispParser implements TextObjects.Parser {
         if(input == null){
             return null;
         }else{
-            console.log(this.rule((<Utils.List<TextObjects.TextObject>>input).head, null).to_string());
             return new Utils.List<TextObjects.TextObject>(new TextObjects.TextObject((<Utils.List<TextObjects.TextObject>>input).head.value, this.rule((<Utils.List<TextObjects.TextObject>>input).head, context)), this.parse((<Utils.List<TextObjects.TextObject>>input).tail));
         }
     }
