@@ -25,7 +25,7 @@ module Render {
 
     }
 
-    export class Render {
+    export class Renderer {
         style_map : Utils.Map<StyleSheet> | void;
 
         constructor(){
@@ -46,6 +46,12 @@ module Render {
             }else{
                 return (<Utils.Map<StyleSheet>>this.style_map).get_id(name);
             }
+        }
+
+        render() : string {
+            var tmp = "";
+
+            return tmp;
         }
 
     }
